@@ -3,6 +3,15 @@
 ## CP #15dfg
 0[1-9][0-9]{3}|[1-4][0-9]{4}|5[0-2][0-9]{3}
 
+
+## Nombre (Inicial con mayuscula) 
+     Pattern pat = Pattern.compile("^[A]bc.*");
+     Matcher mat = pat.matcher(cadena);                                                                           
+     if (mat.matches()) {
+         System.out.println("SI");
+     } else {
+         System.out.println("NO");                                                                                
+     }
 ## Correo institucional # l151190020@milpaalta2.tecnm.mx
 package ejemplo1;
 import java.util.Scanner;
@@ -28,15 +37,28 @@ public class Ejemplo1 {
 }
 
 ## Correo externo  # l151190020@google.com
-String email = "[^@]+@[^@]+\\.[a-zA-Z]{2,}";
+package ejemplo1;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-// Lo siguiente devuelve true
-System.out.println(Pattern.matches(email, "a@b.com"));
-System.out.println(Pattern.matches(email, "+++@+++.com"));
+public class Ejemplo1 {
 
-// Lo siguiente devuelve faslse
-System.out.println(Pattern.matches(email, "@b.com")); // Falta el nombre
-System.out.println(Pattern.matches(email, "a@b.c")); // El dominio final debe tener al menos dos letras
+    public static void main(String[] args) {                                                                      
+ 
+       Scanner sc = new Scanner(System.in);
+       String email;
+       System.out.print("Introduce email: ");
+       email = sc.nextLine();
+       Pattern pat = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");   
+       Matcher mat = pat.matcher(email);
+       if(mat.find()){
+          System.out.println("Correo Válido");
+       }else{
+          System.out.println("Correo No Válido");
+     }
+   }
+}
 
 
 ## Fecha (YYYY/mm/dd) 
@@ -63,3 +85,11 @@ System.out.println(Pattern.matches(numcontrol, "012345678"));
 //Lo siguiente devuelve false
 System.out.println(Pattern.matches(numcontrol, "01234567U")); // La U no es válida
 System.out.println(Pattern.matches(numcontrol, "0123567X")); // No tiene 8 cifras
+
+## Edad
+String cadenaUno = "30";
+		
+if (cadenaUno.matches("[0-9]*"))
+  System.out.println("Es un número");
+else
+  System.out.println("No es un número");
